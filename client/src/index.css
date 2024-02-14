@@ -183,14 +183,15 @@ body {
   .bikeform-submit {
     background-color: #92140C;
     color: #fff;
-    padding: 5px 10px;
+    padding: 8px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    margin-left: 5px;
+    margin-left: 0px;
     margin-top: 3px;
     transition: background-color 0.3s ease;
+    width: 100%;
   }
 
   .bikeform-submit:hover {
