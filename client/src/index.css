@@ -1,3 +1,4 @@
+
 * {
     margin: 0%;
     padding: 0%
@@ -5,8 +6,14 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #C1B4AE;
-  }
+    background-image: url('./public/background1dark.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    backdrop-filter: blur(10px);
+}
+
 /* Auth PAGE */
   .auth-container {
     display: flex;
@@ -71,6 +78,10 @@ body {
   .navbar {
     background-color: #333;
     overflow: hidden;
+    /* background-image: url('./topo.png');
+    background-size: 100vw;
+    background-position: center;
+    background-repeat: no-repeat; */
   }
 
   .navbar a, .navbar button {
