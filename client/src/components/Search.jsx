@@ -22,11 +22,11 @@ export default function Search() {
             {filteredBikes.length > 0 ? (
                 filteredBikes.map((bike) => (
                     <div className='search-bikes' key={bike._id}>
-                        <p>{bike.year}</p>
-                        <p>{bike.model}</p>
-                        <p>{bike.bolt}</p>
-                        <p>{bike.location}</p>
-                        <p>{bike.torque} NM</p>
+                        <p className='bike-year'>{bike.year}&nbsp;</p>
+                        <p className='bike-model'>{bike.model}&nbsp;</p>
+                        <p className='bike-bolt'>{bike.bolt}&nbsp;</p>
+                        <p className='bike-location'>{bike.location}&nbsp;</p>
+                        <p className='bike-torque'>{bike.torque} NM&nbsp;</p>
                     </div>
                 ))
             ) : (

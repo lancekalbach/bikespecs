@@ -237,6 +237,10 @@ body {
 
   .search-bikes {
     margin-bottom: 10px;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .no-result-text {
