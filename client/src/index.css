@@ -241,8 +241,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #555; 
+    border-radius: 8px;
+}
+.search-bikes:hover{
+    border: 1px solid #333;
+}
   .no-result-text {
     color: #92140C;
   }

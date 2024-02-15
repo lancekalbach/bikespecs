@@ -20,12 +20,12 @@ export default function Bike(props) {
         <div className='bike'>
             <div key={bike._id} className='bike-list-bike'>
                 {/* <h2>{user.username}'s bike submission</h2> */}
-                <h3>{bike.year}</h3>
-                <h3>{bike.brand}</h3>
-                <h3>{bike.model}</h3>
-                <h3>{bike.bolt}</h3>
-                <h3>{bike.location}</h3>
-                <h3>{bike.torque} NM</h3>
+                <h3 className='bike-list-year'>{bike.year}</h3>
+                <h3 className='bike-list-brand'>{bike.brand}</h3>
+                <h3 className='bike-list-model'>{bike.model}</h3>
+                <h3 className='bike-list-bolt'>{bike.bolt}</h3>
+                <h3 className='bike-list-location'>{bike.location}</h3>
+                <h3 className='bike-list-torque'>{bike.torque} NM</h3>
             </div>
         </div>
     )
