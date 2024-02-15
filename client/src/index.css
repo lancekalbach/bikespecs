@@ -126,7 +126,7 @@ body {
 
   .welcome-user {
     font-size: 24px;
-    color: #333;
+    color: rgb(35, 35, 35);
     margin-bottom: 10px;
 }
     
@@ -232,6 +232,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    height: 100vw;
   }
 
   .search-bikes {
