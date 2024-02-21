@@ -26,7 +26,9 @@ export default function Bike(props) {
                 <h3 className='bike-list-bolt'>{bike.bolt}</h3>
                 <h3 className='bike-list-location'>{bike.location}</h3>
                 <h3 className='bike-list-torque'>{bike.torque} NM</h3>
-                <img className='bike-list-image' src={bike.imge} alt="Bike Image" />
+                {bike.imge ? (
+                    <img className='bike-list-image' src={bike.imge} alt="Bike Image" />
+                ) : null}
             </div>
         </div>
     )
