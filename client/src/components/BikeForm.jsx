@@ -6,6 +6,7 @@ const initInputs = {
     bolt: "",
     location: "",
     torque: "",
+    imge: "",
     author: {}
 }
 
@@ -27,7 +28,7 @@ export default function BikeForm(props) {
         setInputs(initInputs)
     }
 
-    const { year, model, bolt, location, torque } = inputs
+    const { year, model, bolt, location, torque, imge } = inputs
 
     return (
         <form onSubmit={handleSubmit} className='bike-form'>
@@ -61,7 +62,13 @@ export default function BikeForm(props) {
             value={torque}
             onChange={handleChange}
             placeholder="Torque: (NM) "/>
-            <button className='bikeform-submit'>Submit Bike Information</button>
+        <input 
+            type="text"
+            name="imge"
+            value={imge}
+            onChange={handleChange}
+            placeholder="Image Address:" />
+        <button className='bikeform-submit'>Submit Bike Information</button>
         </form>
     )
 }

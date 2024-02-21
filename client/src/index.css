@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('./public/background1dark.jpg');
+    background-image: url('./background1dark.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,6 +46,7 @@ body {
     margin: 10px 8px;
     padding: 8px;
     border-radius: 4px;
+    border: none;
   }
   
   .log-btn {
@@ -53,6 +54,8 @@ body {
     padding: 8px;
     border-radius: 4px;
     background-color: rgb(52, 143, 52);
+    border: none;
+    color: whitesmoke;
   }
 
   .log-btn:hover {
@@ -113,10 +116,9 @@ body {
 
   .navbar button {
     background-color: transparent;
-    color: white;
+    color: #f2f2f2;
     border: none;
     cursor: pointer;
-    border-radius: 3px;
   }
 
   .navbar button:hover {
@@ -135,7 +137,7 @@ body {
   
   }
 
-  /* Profile page styling */
+  /* ALL BIKES page styling */
   .profile-div {
     max-width: 600px;
     margin: 20px auto;
@@ -204,6 +206,11 @@ body {
 
 .bike-list-bike:hover {
     border-color: #333;
+}
+
+.bike-list-image {
+    max-width: 400px;
+    max-height: 400px;
 }
 
   .bikeform-submit {

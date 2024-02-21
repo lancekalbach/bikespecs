@@ -19,6 +19,9 @@ const bikeSchema = new Schema({
     },
     torque: {
         type: Number,
+    },
+    imge: {
+        type: String
     }
 })
 
