@@ -17,7 +17,7 @@ export default function Bike(props) {
     const { user } = useContext(UserContext)
 
     return (
-        <div className='bike'>
+        <div className='bike-list'>
             <div key={bike._id} className='bike-list-bike'>
                 {/* <h2>{user.username}'s bike submission</h2> */}
                 <h3 className='bike-list-year'>{bike.year}</h3>
