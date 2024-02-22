@@ -61,7 +61,7 @@ export default function BikeForm(props) {
             name="torque"
             value={torque}
             onChange={handleChange}
-            placeholder="Torque: (NM) "/>
+            placeholder="Torque: "/>
         <input 
             type="text"
             name="imge"
