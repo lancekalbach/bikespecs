@@ -75,13 +75,17 @@ body {
   }
 
   .auth-member {
-    padding: 10px;
-    background-color: #92140C;
-    color: whitesmoke;
-    border-radius: 5px;
+    padding: 16px 20px;
+    background-color: gray;
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 20px;
     text-align: center;
     margin: 0;
     transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
   }
 
   .auth-member:hover {
