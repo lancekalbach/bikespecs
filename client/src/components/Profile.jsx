@@ -1,9 +1,13 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import BikeList from './BikeList.jsx'
 import { UserContext } from '../context/UserProvider.jsx'
 import BikeForm from './BikeForm.jsx'
+import PageLoading from './PageLoading.jsx'
 
 export default function Profile() {
+
+const [ isLoading, setIsLoading ] = useState(true)
+
     const {
         user: {
             username, _id
@@ -19,6 +23,16 @@ export default function Profile() {
 useEffect(() => {
     getAllBikes()
 }, [])
+
+useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+  }, [])
+
+  if (isLoading) {
+    return <PageLoading />
+  }
 
 return (
     <div className='profile-div'>
