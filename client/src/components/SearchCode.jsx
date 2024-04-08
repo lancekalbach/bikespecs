@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { UserContext, useUser } from '../context/UserProvider.jsx'
+import '../styles/search.css'
 
 const SearchCode = () => {
     const [query, setQuery] = useState('')

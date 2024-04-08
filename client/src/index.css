@@ -16,7 +16,7 @@ body {
 }
 
 /* Auth PAGE */
-  .auth-container {
+  /* .auth-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,10 +96,10 @@ body {
     margin-bottom: 20px;
     font-size: 20px;
     color: gray;
-  }
+  } */
 
   /* NAVBAR */
-  .navbar {
+  /* .navbar {
     background-color: rgba(51, 51, 51, 0.8);
     position: sticky;
     top: 0;
@@ -151,10 +151,10 @@ body {
       transform: translateX(-12%);
     }
   
-  }
+  } */
 
   /* ALL BIKES page styling */
-  .profile-div {
+  /* .profile-div {
     max-width: 600px;
     margin: 20px auto;
     margin-top: 0px;
@@ -163,10 +163,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
   }
-
-  /* .profile-div :hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
-  } */
 
   .welcome-user {
     font-size: 24px;
@@ -245,10 +241,10 @@ body {
 
   .bikeform-submit:hover {
     background-color: #6f100a;
-  }
+  } */
 
   /* search page styling */
-  .search-container {
+  /* .search-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -294,16 +290,17 @@ body {
     background-color: #333;
     border: 1px solid #555; 
     border-radius: 8px;
+    cursor: pointer;
 }
 .search-bikes:hover{
     border: 1px solid #333;
 }
   .no-result-text {
     color: #92140C;
-  }
+  } */
 
 /* Loading Page */
-.page-loading-container {
+/* .page-loading-container {
     border: 0;
 	box-sizing: border-box;
 	margin: 0;
@@ -318,7 +315,7 @@ body {
 	transition:
 		background-color var(--trans-dur),
 		color var(--trans-dur);
-}
+} */
 
 /* :root {
 	--hue: 223;
@@ -329,7 +326,7 @@ body {
 	font-size: calc(16px + (32 - 16) * (100vw - 320px) / (2560 - 320));
 } */
 
-.bike {
+/* .bike {
 	display: block;
 	margin: auto;
 	width: 16em;
@@ -377,7 +374,7 @@ body {
 	animation-name: bikeTire;
 }
 
-/* Dark theme */
+
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bg: hsl(var(--hue),90%,10%);
@@ -385,7 +382,7 @@ body {
 	}
 }
 
-/* Animations */
+
 @keyframes bikeBody {
 	from { stroke-dashoffset: 79; }
 	33%,
@@ -465,4 +462,4 @@ body {
 		stroke-dashoffset: -56.549;
 		transform: rotate(1turn);
 	}
-}
+} */

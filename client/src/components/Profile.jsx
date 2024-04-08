@@ -3,6 +3,7 @@ import BikeList from './BikeList.jsx'
 import { UserContext } from '../context/UserProvider.jsx'
 import BikeForm from './BikeForm.jsx'
 import PageLoading from './PageLoading.jsx'
+import '../styles/profile.css'
 
 export default function Profile() {
 
@@ -27,7 +28,7 @@ useEffect(() => {
 useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
-    }, 3000)
+    }, 2000)
   }, [])
 
   if (isLoading) {

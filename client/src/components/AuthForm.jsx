@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/auth.css'
 
 export default function AuthForm(props){
   const {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../styles/bike.css'
 
 const initInputs = {
     year: "",

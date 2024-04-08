@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import SearchCode from './SearchCode.jsx'
 import { UserContext, useUser } from '../context/UserProvider.jsx'
 import BikeList from './BikeList.jsx'
+import '../styles/search.css'
 
 export default function Search() {
    

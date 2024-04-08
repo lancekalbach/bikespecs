@@ -1,0 +1,55 @@
+/* Search Page */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+  }
+  .search-input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 30vw;
+  }
+
+  .search-button {
+    background-color: #92140C;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-button:hover {
+    background-color: #6f100a;
+  }
+
+  .search-results-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vw;
+  }
+
+  .search-bikes {
+    margin-bottom: 10px;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #555; 
+    border-radius: 8px;
+    cursor: pointer;
+}
+.search-bikes:hover{
+    border: 1px solid #333;
+}
+  .no-result-text {
+    color: #92140C;
+  }
