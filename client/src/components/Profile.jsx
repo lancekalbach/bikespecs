@@ -4,10 +4,22 @@ import { UserContext } from '../context/UserProvider.jsx'
 import BikeForm from './BikeForm.jsx'
 import PageLoading from './PageLoading.jsx'
 import '../styles/profile.css'
+import axios from 'axios'
 
 export default function Profile() {
 
 const [ isLoading, setIsLoading ] = useState(true)
+const [hasPerms, setHasPerms] = useState(false);
+
+    useEffect(() => {
+        axios.get('/auth/permissions')
+        .then(response => {
+            setHasPerms(response.data.hasPerms);
+        })
+        .catch(error => {
+            console.error('Error fetching permissions:', error);
+        });
+    }, [])
 
     const {
         user: {
@@ -38,8 +50,12 @@ useEffect(() => {
 return (
     <div className='profile-div'>
         <h1 className="welcome-user">Welcome {username}!</h1>
-        <h2 className='profile-h2'>Submit Bikes Here:</h2>
-        <BikeForm addBike={addBike}/>
+        {hasPerms && (
+            <>
+                <h2 className='profile-h2'>Submit Bikes Here:</h2>
+                <BikeForm addBike={addBike}/>
+            </>
+        )}
         <h3>All Submitted Bikes:</h3>
         <BikeList bikes={allBikes} />
     </div>

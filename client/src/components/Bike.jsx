@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-//import BikeForm from './BikeForm.jsx'
 import { UserContext } from '../context/UserProvider.jsx'
 import axios from 'axios'
 import '../styles/bike.css'
@@ -13,16 +12,16 @@ userAxios.interceptors.request.use(config => {
 })
 
 export default function Bike(props) {
-    const [isClicked, setIsClicked] = useState(false); // State to track whether the bike is clicked or not
+    const [isClicked, setIsClicked] = useState(false)
     const { bike } = props
     const { user } = useContext(UserContext)
 
     const handleClick = () => {
-        setIsClicked(!isClicked); // Toggle the isClicked state
+        setIsClicked(!isClicked)
     }
 
     const handleClose = () => {
-        setIsClicked(false); // Close the popup by setting isClicked to false
+        setIsClicked(false)
     }
 
     return (
