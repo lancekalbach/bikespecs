@@ -50,13 +50,10 @@ export default function Bike(props) {
                             <h3 className='bike-list-bolt'>{bike.bolt}</h3>
                             <h3 className='bike-list-location'>{bike.location}</h3>
                             <h3 className='bike-list-torque'>{bike.torque} NM</h3>
-                            {/* <a href={bike.pdf} target="_blank" rel="noopener noreferrer">
-                                View PDF
-                            </a> */}
                             <iframe
                                 src={bike.pdf}
                                 width="100%"
-                                height="500px"
+                                height="750px"
                                 title="Embedded PDF"
                             />
                             <img className='bike-list-image' src={bike.imge} alt="Bike Image" />

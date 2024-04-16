@@ -103,6 +103,8 @@
     z-index: 1000;
     max-width: 80%;
     opacity: 0;
+    max-width: 80%; /* Set maximum width to 80% */
+    width: 100%; 
     animation: fadeIn 0.5s ease forwards;
 }
 

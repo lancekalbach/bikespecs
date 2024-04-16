@@ -50,6 +50,11 @@ useEffect(() => {
 return (
     <div className='profile-div'>
         <h1 className="welcome-user">Welcome {username}!</h1>
+        <h4 className='construction-warning'>This is a test deploy,
+        please be warned that there will be many changes coming to this application 
+        as it is still in construction.
+        Feel free to send any recommendations or 
+        report any bugs to me at lancekalbach@gmail.com</h4>
         {hasPerms && (
             <>
                 <h2 className='profile-h2'>Submit Bikes Here:</h2>
