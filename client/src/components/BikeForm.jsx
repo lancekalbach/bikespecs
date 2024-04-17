@@ -46,7 +46,7 @@ export default function BikeForm(props) {
             value={model}
             onChange={handleChange}
             placeholder="Model of bike:"/>
-        <input
+        {/* <input
             type="text"
             name="bolt"
             value={bolt}
@@ -63,7 +63,7 @@ export default function BikeForm(props) {
             name="torque"
             value={torque}
             onChange={handleChange}
-            placeholder="Torque: "/>
+            placeholder="Torque: "/> */}
         <input 
             type="text"
             name="imge"

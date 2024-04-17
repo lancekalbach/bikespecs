@@ -20,14 +20,14 @@ export default function AuthForm(props){
         value={username} 
         name="username" 
         onChange={handleChange} 
-        placeholder="Username"
+        placeholder="Username:"
         className='auth-input'/>
       <input 
         type="text" 
         value={password} 
         name="password" 
         onChange={handleChange} 
-        placeholder="Password"
+        placeholder="Password:"
         className='auth-input'/>
       <button className='log-btn'>{ btnText }</button>
       <p style={{color: "red"}}>{errMsg}</p>

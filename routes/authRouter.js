@@ -14,6 +14,12 @@ authRouter.get('/id/:userId', (req, res, next) => {
     })
 })
 
+//checking for form permissions
+authRouter.get('/permissions', (req, res) => {
+    const hasPerms = true
+    res.json({ hasPerms })
+})
+
 //signup
 authRouter.post("/signup", (req, res, next) => {
     User.findOne({username: req.body.username}, (err, user) => {
