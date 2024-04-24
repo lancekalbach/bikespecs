@@ -18,6 +18,7 @@ export default function UserProvider(props) {
         user: JSON.parse(storedUser) || {},
         token: localStorage.getItem('token') || "",
         bikes: [],
+        allBikes: [],
         errMsg: ""
     }
 
@@ -95,12 +96,13 @@ function login(credentials){
         console.log('addBike context', res.data)
     setUserState(prevState => ({
         ...prevState,
-        bikes: [...prevState.bikes, res.data]
+        bikes: [...prevState.bikes, res.data],
+        allBikes: [...prevState.allBikes, res.data]
     }))
     })
     .catch(err => console.log(err.response.data.errMsg))
   }
-
+  
   //get all bikes
   function getAllBikes() {
     userAxios.get('/api/bike/getAll')
@@ -150,6 +152,9 @@ function login(credentials){
       console.error('Error searching bikes:', err)
     }
   }
+
+  //pdf stuff
+
 
 
   return (

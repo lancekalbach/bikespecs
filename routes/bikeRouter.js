@@ -2,6 +2,7 @@ const express = require("express")
 const bikeRouter = express.Router()
 const Bike = require('../models/bike.js')
 const user = require('../models/user.js')
+const multer = require('multer')
 
 //Get All Bikes//not on page load
 bikeRouter.get("/", (req,res,next) => {
@@ -81,5 +82,31 @@ bikeRouter.get('/search', async (req, res) => {
 })
 
 //Update Bike 
+
+
+//pdf handling
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads/')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname)
+    },
+  });
+  
+  const upload = multer({ storage });
+  
+  bikeRouter.post('/upload', upload.single('pdfFile'), async (req, res) => {
+    try {
+      const { name, path } = req.file;
+      const newPdf = new Pdf({ name, path });
+      await newPdf.save();
+      res.status(201).send('PDF uploaded successfully');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }
+  })
+
 
 module.exports = bikeRouter

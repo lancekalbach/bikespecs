@@ -17,25 +17,25 @@ export default function BikeForm(props) {
     const {addBike} = props
 
     function handleChange(e) {
-        const {name, value} = e.target
-        setInputs (prevInputs => ({
+        const { name, value } = e.target
+          setInputs(prevInputs => ({
             ...prevInputs,
-            [name]: value
-        }))
-    } 
-
+            [name]: value,
+          }))
+    }
+    
     function handleSubmit(e) {
         e.preventDefault()
         addBike(inputs)
         setInputs(initInputs)
     }
-
+    
     const { year, model, bolt, location, torque, imge, pdf } = inputs
 
     return (
         <form onSubmit={handleSubmit} className='bike-form'>
         <input
-            type="text"
+            type="number"
             name="year"
             value={year}
             onChange={handleChange}
@@ -70,12 +70,18 @@ export default function BikeForm(props) {
             value={imge}
             onChange={handleChange}
             placeholder="Image Address:" />
-        <input 
+        {/* <input 
             type="text"
             name="pdf"
             value={pdf}
             onChange={handleChange}
-            placeholder="PDF:" /> 
+            placeholder="PDF:" />  */}
+        <input
+            type='file' 
+            name='pdf'
+            value={pdf}
+            onChange={handleChange}
+            placeholder="PDF File" />
         <button className='bikeform-submit'>Submit Bike Information</button>
         </form>
     )

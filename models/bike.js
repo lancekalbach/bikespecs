@@ -21,7 +21,8 @@ const bikeSchema = new Schema({
         type: Number,
     },
     pdf: {
-        type: String,
+        name: String,
+        path: String,
     },
     imge: {
         type: String

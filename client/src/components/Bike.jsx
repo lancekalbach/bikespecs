@@ -47,16 +47,16 @@ export default function Bike(props) {
                             <h3 className='bike-list-year'>{bike.year}</h3>
                             <h3 className='bike-list-brand'>{bike.brand}</h3>
                             <h3 className='bike-list-model'>{bike.model}</h3>
-                            <h3 className='bike-list-bolt'>{bike.bolt}</h3>
-                            <h3 className='bike-list-location'>{bike.location}</h3>
-                            <h3 className='bike-list-torque'>{bike.torque} NM</h3>
+                            {/* <h3 className='bike-list-bolt'>{bike.bolt}</h3>
+                            <h3 className='bike-list-location'>{bike.location}</h3> */}
+                            {/* <h3 className='bike-list-torque'>{bike.torque} NM</h3> */}
                             <iframe
                                 src={bike.pdf}
                                 width="100%"
                                 height="750px"
                                 title="Embedded PDF"
                             />
-                            <img className='bike-list-image' src={bike.imge} alt="Bike Image" />
+                            {/* <img className='bike-list-image' src={bike.imge} alt="Bike Image" /> */}
                         </div>
                     </div>
                 </div>
