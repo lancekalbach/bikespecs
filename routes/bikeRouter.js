@@ -3,6 +3,7 @@ const bikeRouter = express.Router()
 const Bike = require('../models/bike.js')
 const user = require('../models/user.js')
 const multer = require('multer')
+// app.use("/files",express.static("files"))
 
 //Get All Bikes//not on page load
 bikeRouter.get("/", (req,res,next) => {
@@ -82,31 +83,34 @@ bikeRouter.get('/search', async (req, res) => {
 })
 
 //Update Bike 
+//need to add edit and delete functionality 
 
 
 //pdf handling
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'uploads/')
+      cb(null, './files');
     },
     filename: (req, file, cb) => {
-      cb(null, file.originalname)
+      const uniqueSuffix = Date.now();
+      cb(null, uniqueSuffix + file.originalname);
     },
   });
   
-  const upload = multer({ storage });
+  const upload = multer({ storage: storage });
   
-  bikeRouter.post('/upload', upload.single('pdfFile'), async (req, res) => {
+  bikeRouter.post('/upload-files', upload.single('file'), async (req, res) => {
     try {
       const { name, path } = req.file;
-      const newPdf = new Pdf({ name, path });
-      await newPdf.save();
+      const newBike = new Bike({ pdf: { name, path } }); // Create a new instance of Bike model
+      await newBike.save();
       res.status(201).send('PDF uploaded successfully');
     } catch (error) {
       console.error(error);
       res.status(500).send('Server Error');
     }
-  })
+    console.log(req.file + 'testing backend to see if it comes through');
+  });
 
 
 module.exports = bikeRouter

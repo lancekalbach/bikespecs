@@ -88,20 +88,6 @@ function login(credentials){
   }
 
   //Start bike context here
-
-  //Adding new bikes and their information 
-  function addBike(newBike) {
-    userAxios.post('/api/bike', newBike)
-    .then(res => {
-        console.log('addBike context', res.data)
-    setUserState(prevState => ({
-        ...prevState,
-        bikes: [...prevState.bikes, res.data],
-        allBikes: [...prevState.allBikes, res.data]
-    }))
-    })
-    .catch(err => console.log(err.response.data.errMsg))
-  }
   
   //get all bikes
   function getAllBikes() {
@@ -153,8 +139,38 @@ function login(credentials){
     }
   }
 
-  //pdf stuff
+  //Adding new bikes and their information 
+  function addBike(newBike) {
+    userAxios.post('/api/bike', newBike)
+    .then(res => {
+        console.log('addBike context', res.data)
+    setUserState(prevState => ({
+        ...prevState,
+        bikes: [...prevState.bikes, res.data],
+        allBikes: [...prevState.allBikes, res.data]
+    }))
+    })
+    .catch(err => console.log(err.response.data.errMsg))
+  }
 
+  //pdf stuff
+  async function postPdf(pdfFile) {
+    try {
+      const formData = new FormData()
+      formData.append('file', pdfFile)
+  
+      const response = await userAxios.post('/api/bike/upload-files', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      console.log(response.data)
+      return response.data
+    } catch (error) {
+      console.error('Error uploading PDF:', error);
+      throw error
+    }
+  }
 
 
   return (
@@ -169,6 +185,7 @@ function login(credentials){
             getUserBikes,
             handleSearch,
             getAllBikes,
+            postPdf,
             bikes, allBikes, filteredBikes
         }}>
         { props.children }

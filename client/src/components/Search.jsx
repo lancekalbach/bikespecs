@@ -25,9 +25,6 @@ export default function Search() {
                     <div className='search-bikes' key={bike._id}>
                         <p className='bike-year'>{bike.year}&nbsp;</p>
                         <p className='bike-model'>{bike.model}&nbsp;</p>
-                        <p className='bike-bolt'>{bike.bolt}&nbsp;</p>
-                        <p className='bike-location'>{bike.location}&nbsp;</p>
-                        <p className='bike-torque'>{bike.torque} NM&nbsp;</p>
                     </div>
                 ))
             ) : (
