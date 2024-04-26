@@ -25,16 +25,16 @@ export default function BikeForm(props) {
         setInputs(prevInputs => ({
             ...prevInputs,
             [name]: value,
-        }));
+        }))
     }
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
         let pdfPath = inputs.pdf
         if (inputs.pdf) {
-            const pdfData = await postPdf(inputs.pdf);
+            const pdfData = await postPdf(inputs.pdf)
             pdfPath = pdfData.path
         }
 
