@@ -1,31 +1,27 @@
-import React, { useState } from 'react';
-import '../styles/bike.css';
-import { useUser } from '../context/UserProvider'; // Adjust the path as needed
-
+import React, { useState } from 'react'
+import '../styles/bike.css'
+import { useUser } from '../context/UserProvider'
 const initInputs = {
     year: "",
     model: "",
-    bolt: "",
-    location: "",
-    torque: "",
     imge: "",
     pdf: null,
     author: {}
 }
 
 export default function BikeForm(props) {
-    const [inputs, setInputs] = useState(initInputs);
-    const { addBike, postPdf } = useUser(); // Assuming your provider exposes postPdf
+    const [inputs, setInputs] = useState(initInputs)
+    const { addBike, postPdf } = useUser()
 
     const handleFileChange = (e) => {
         setInputs(prevInputs => ({
             ...prevInputs,
-            pdf: e.target.files[0], // Store the selected PDF file
+            pdf: e.target.files[0],
         }));
     }
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
         setInputs(prevInputs => ({
             ...prevInputs,
             [name]: value,
@@ -33,30 +29,25 @@ export default function BikeForm(props) {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        // Upload PDF file first
+    try {
+        let pdfPath = inputs.pdf
         if (inputs.pdf) {
-            try {
-                const pdfData = await postPdf(inputs.pdf);
-                // Assuming your backend returns the PDF path or ID
-                setInputs(prevInputs => ({
-                    ...prevInputs,
-                    pdf: pdfData.path, // Update the PDF field with the path returned from backend
-                }));
-            } catch (error) {
-                console.error('Error uploading PDF:', error);
-                // Handle error (e.g., show an error message)
-                return;
-            }
+            const pdfData = await postPdf(inputs.pdf);
+            pdfPath = pdfData.path
         }
 
-        // Add bike information
-        addBike(inputs);
-        setInputs(initInputs);
+        const bikeData = { ...inputs, pdf: pdfPath }
+        addBike(bikeData)
+        setInputs(initInputs)
+    } catch (error) {
+        console.error('Error submitting bike information:', error)
     }
+}
 
-    const { year, model, bolt, location, torque, imge } = inputs;
+
+    const { year, model, imge } = inputs
 
     return (
         <form onSubmit={handleSubmit} className='bike-form'>

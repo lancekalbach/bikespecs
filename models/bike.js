@@ -11,18 +11,8 @@ const bikeSchema = new Schema({
     model: {
         type: String,
     },
-    bolt: {
-        type: String,
-    },
-    location: {
-        type: String,
-    },
-    torque: {
-        type: Number,
-    },
     pdf: {
-        name: String,
-        path: String,
+        type: String
     },
     imge: {
         type: String

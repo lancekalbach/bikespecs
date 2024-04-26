@@ -3,7 +3,6 @@ const bikeRouter = express.Router()
 const Bike = require('../models/bike.js')
 const user = require('../models/user.js')
 const multer = require('multer')
-// app.use("/files",express.static("files"))
 
 //Get All Bikes//not on page load
 bikeRouter.get("/", (req,res,next) => {
@@ -35,20 +34,6 @@ bikeRouter.get('/getAll', async (req, res, next) => {
         res.status(500)
         return next(err)
     }
-})
-
-//Add new bike
-bikeRouter.post("/", (req, res, next) => {
-    req.body.author = req.auth._id;
-    const newBike = new Bike(req.body);
-    newBike.save( async (err, savedBike) => {
-        if (err) {
-            return handleErrors(res, next, err)
-        }
-        const bikeUser = await user.findById(newBike.author)
-        const postWithUser = {...savedBike.toObject(), bikeUser: bikeUser?.withoutPassword()}
-        return res.status(201).send(postWithUser)
-    })
 })
 
 //Get bikes by user ID
@@ -86,31 +71,45 @@ bikeRouter.get('/search', async (req, res) => {
 //need to add edit and delete functionality 
 
 
+//Add new bike
+bikeRouter.post("/", (req, res, next) => {
+    req.body.author = req.auth._id;
+    const newBike = new Bike(req.body);
+    newBike.save( async (err, savedBike) => {
+        if (err) {
+            return handleErrors(res, next, err)
+        }
+        const bikeUser = await user.findById(newBike.author)
+        const postWithUser = {...savedBike.toObject(), bikeUser: bikeUser?.withoutPassword()}
+        return res.status(201).send(postWithUser)
+    })
+})
+
 //pdf handling
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, './files');
+      cb(null, './files')
     },
     filename: (req, file, cb) => {
-      const uniqueSuffix = Date.now();
-      cb(null, uniqueSuffix + file.originalname);
+      const uniqueSuffix = Date.now()
+      cb(null, uniqueSuffix + file.originalname)
     },
-  });
+  })
   
-  const upload = multer({ storage: storage });
+  const upload = multer({ storage: storage })
   
   bikeRouter.post('/upload-files', upload.single('file'), async (req, res) => {
     try {
-      const { name, path } = req.file;
-      const newBike = new Bike({ pdf: { name, path } }); // Create a new instance of Bike model
-      await newBike.save();
-      res.status(201).send('PDF uploaded successfully');
+      const { path } = req.file
+      const newBike = new Bike({ pdf: path })
+      await newBike.save()
+      res.status(201).send('PDF uploaded successfully')
     } catch (error) {
-      console.error(error);
-      res.status(500).send('Server Error');
+      console.error(error)
+      res.status(500).send('Server Error')
     }
-    console.log(req.file + 'testing backend to see if it comes through');
-  });
+    console.log(req.file + 'testing backend to see if it comes through')
+  })
 
 
 module.exports = bikeRouter
