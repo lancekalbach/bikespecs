@@ -12,10 +12,17 @@ const bikeSchema = new Schema({
         type: String,
     },
     pdf: {
-        type: String
+        type: String,
+        required: true,
+        validate: {
+            validator: function (v) {
+                return v && v.length < 10 * 1024 * 1024
+            },
+            message: props => `${props.value} exceeds the file size limit of 10MB!`,
+        },
     },
     imge: {
-        type: String
+        type: String,
     }
 })
 

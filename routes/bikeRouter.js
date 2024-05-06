@@ -72,19 +72,6 @@ bikeRouter.get('/search', async (req, res) => {
 
 
 //Add new bike
-bikeRouter.post("/", (req, res, next) => {
-    req.body.author = req.auth._id;
-    const newBike = new Bike(req.body);
-    newBike.save( async (err, savedBike) => {
-        if (err) {
-            return handleErrors(res, next, err)
-        }
-        const bikeUser = await user.findById(newBike.author)
-        const postWithUser = {...savedBike.toObject(), bikeUser: bikeUser?.withoutPassword()}
-        return res.status(201).send(postWithUser)
-    })
-})
-
 //pdf handling
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -98,18 +85,33 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage })
   
-  bikeRouter.post('/upload-files', upload.single('file'), async (req, res) => {
+
+
+bikeRouter.post("/", upload.single('pdf'), async (req, res, next) => {
+    req.body.author = req.auth._id
+    const { year, brand, model, imge } = req.body
+    const pdfPath = req.file ? req.file.path : null
     try {
-      const { path } = req.file
-      const newBike = new Bike({ pdf: path })
-      await newBike.save()
-      res.status(201).send('PDF uploaded successfully')
-    } catch (error) {
-      console.error(error)
-      res.status(500).send('Server Error')
+        const newBike = new Bike({
+            year,
+            brand,
+            model,
+            imge,
+            pdf: pdfPath,
+            author: req.auth._id,
+        })
+        const savedBike = await newBike.save()
+        const bikeUser = await user.findById(newBike.author)
+        const postWithUser = {
+            ...savedBike.toObject(),
+            bikeUser: bikeUser?.withoutPassword(),
+        };
+        return res.status(201).send(postWithUser)
+    } catch (err) {
+        return handleErrors(res, next, err)
     }
-    console.log(req.file + 'testing backend to see if it comes through')
-  })
+})
+
 
 
 module.exports = bikeRouter

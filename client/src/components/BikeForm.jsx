@@ -11,13 +11,13 @@ const initInputs = {
 
 export default function BikeForm(props) {
     const [inputs, setInputs] = useState(initInputs)
-    const { addBike, postPdf } = useUser()
+    const { addBike } = useUser()
 
     const handleFileChange = (e) => {
         setInputs(prevInputs => ({
             ...prevInputs,
             pdf: e.target.files[0],
-        }));
+        }))
     }
 
     const handleChange = (e) => {
@@ -28,23 +28,20 @@ export default function BikeForm(props) {
         }))
     }
 
-    const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault()
-
     try {
         let pdfPath = inputs.pdf
-        if (inputs.pdf) {
-            const pdfData = await postPdf(inputs.pdf)
-            pdfPath = pdfData.path
-        }
-
         const bikeData = { ...inputs, pdf: pdfPath }
         addBike(bikeData)
         setInputs(initInputs)
     } catch (error) {
         console.error('Error submitting bike information:', error)
     }
-}
+};
+
+
+
 
 
     const { year, model, imge } = inputs
@@ -74,7 +71,7 @@ export default function BikeForm(props) {
                 name='pdf'
                 accept='application/pdf'
                 onChange={handleFileChange}
-                placeholder="PDF File" />
+                placeholder="Choose PDF File" />
             <button className='bikeform-submit'>Submit Bike Information</button>
         </form>
     )

@@ -2,6 +2,13 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/UserProvider.jsx'
 import axios from 'axios'
 import '../styles/bike.css'
+import { pdfjs } from 'react-pdf'
+import PdfComp from './PdfComp.jsx'
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.js',
+    import.meta.url,
+  ).toString()
 
 const userAxios = axios.create()
 
@@ -13,15 +20,18 @@ userAxios.interceptors.request.use(config => {
 
 export default function Bike(props) {
     const [isClicked, setIsClicked] = useState(false)
+    const [pdfFile, setPdffile] = useState(null)
     const { bike } = props
     const { user } = useContext(UserContext)
 
     const handleClick = () => {
         setIsClicked(!isClicked)
+        setPdffile(bike.pdf)
     }
 
     const handleClose = () => {
         setIsClicked(false)
+        setPdffile(null)
     }
 
     return (
@@ -44,12 +54,7 @@ export default function Bike(props) {
                             <h3 className='bike-list-year'>{bike.year}</h3>
                             <h3 className='bike-list-brand'>{bike.brand}</h3>
                             <h3 className='bike-list-model'>{bike.model}</h3>
-                            <iframe
-                                src={bike.pdf}
-                                width="100%"
-                                height="750px"
-                                title="Embedded PDF"
-                            />
+                            <PdfComp pdfFile={pdfFile}/>
                             {/* <img className='bike-list-image' src={bike.imge} alt="Bike Image" /> */}
                         </div>
                     </div>

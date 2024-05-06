@@ -17,8 +17,8 @@ const [hasPerms, setHasPerms] = useState(false);
             setHasPerms(response.data.hasPerms);
         })
         .catch(error => {
-            console.error('Error fetching permissions:', error);
-        });
+            console.error('Error fetching permissions:', error)
+        })
     }, [])
 
     const {
